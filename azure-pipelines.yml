@@ -25,14 +25,14 @@ stages:
         - task: TerraformTask@5
           displayName: TF Init
           inputs:
-              provider: 'azurerm'
-              command: 'init'
-              backendAzureRmUseEntraIdForAuthentication: false
-              backendServiceArm: 'Azure subscription 1(1)(7b4fa607-b447-4f15-99df-721b7b10c661)'
-              backendAzureRmResourceGroupName: 'terrafor-resource-group'
-              backendAzureRmStorageAccountName: 'terraformstorage2026'
-              backendAzureRmContainerName: 'terraform-tfstat'
-              backendAzureRmKey: 'prod.terraform.tfstate'
+            provider: 'azurerm'
+            command: 'init'
+            backendAzureRmUseEntraIdForAuthentication: false
+            backendServiceArm: 'Azure-Service-connection'
+            backendAzureRmResourceGroupName: 'terrafor-resource-group'
+            backendAzureRmStorageAccountName: 'terraformstorage2026'
+            backendAzureRmContainerName: 'terraform-tfstat'
+            backendAzureRmKey: 'prod.terraform.tfstate'
 
         # - task: TerraformTask@5
         #   displayName: tfInit
@@ -63,7 +63,8 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            environmentServiceNameAzureRM: 'Azure subscription 1(1)(7b4fa607-b447-4f15-99df-721b7b10c661)'
+            environmentServiceNameAzureRM: 'Azure-Service-connection'
+            environmentAzureRmUseIdTokenGeneration: true
 
         - task: ArchiveFiles@2
           displayName: ArchiveFiles
