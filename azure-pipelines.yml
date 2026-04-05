@@ -61,9 +61,9 @@ stages:
         - task: TerraformTask@5
           displayName: tf plan
           inputs:
-           provider: 'azurerm'
-           command: 'plan'
-           environmentServiceNameAzureRM: 'Azure subscription 1(7b4fa607-b447-4f15-99df-721b7b10c661)'
+            provider: 'azurerm'
+            command: 'plan'
+            environmentServiceNameAzureRM: 'Azure subscription 1(1)(7b4fa607-b447-4f15-99df-721b7b10c661)'
 
         - task: ArchiveFiles@2
           displayName: ArchiveFiles
