@@ -57,6 +57,7 @@ stages:
             command: 'custom'
             outputTo: 'console'
             customCommand: 'fmt'
+            environmentServiceNameAzureRM: 'Azure-Service-connection'
 
         - task: TerraformTask@5
           displayName: tf plan
