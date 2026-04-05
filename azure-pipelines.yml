@@ -23,16 +23,27 @@ stages:
            terraformVersion: '1.6.6'
 
         - task: TerraformTask@5
-          displayName: tfInit
           inputs:
-            provider: 'azurerm'
-            command: 'init'
-           #commandOptions: '-out $(Build.SourcesDirectory)/tfplanfile'
-            backendServiceArm: 'Azure subscription 1(1)(7b4fa607-b447-4f15-99df-721b7b10c661)'
-            backendAzureRmResourceGroupName: 'terraform-cloud-shell-RG'
-            backendAzureRmStorageAccountName: 'terraformcloud2026'
-            backendAzureRmContainerName: 'terraform-tfstat1'
-            backendAzureRmKey: 'prod.terraform.tfstate'
+              provider: 'azurerm'
+              command: 'init'
+              backendAzureRmUseEntraIdForAuthentication: false
+              backendServiceArm: 'Azure subscription 1(1)(7b4fa607-b447-4f15-99df-721b7b10c661)'
+              backendAzureRmResourceGroupName: 'terrafor-resource-group'
+              backendAzureRmStorageAccountName: 'terraformstorage2026'
+              backendAzureRmContainerName: 'terraform-tfstat'
+              backendAzureRmKey: 'prod.terraform.tfstate'
+
+        # - task: TerraformTask@5
+        #   displayName: tfInit
+        #   inputs:
+        #     provider: 'azurerm'
+        #     command: 'init'
+        #    #commandOptions: '-out $(Build.SourcesDirectory)/tfplanfile'
+        #     backendServiceArm: 'Azure subscription 1(1)(7b4fa607-b447-4f15-99df-721b7b10c661)'
+        #     backendAzureRmResourceGroupName: 'terraform-cloud-shell-RG'
+        #     backendAzureRmStorageAccountName: 'terraformcloud2026'
+        #     backendAzureRmContainerName: 'terraform-tfstat1'
+        #     backendAzureRmKey: 'prod.terraform.tfstate'
         - task: TerraformTask@5
           displayName: TF validate
           inputs:
